@@ -6,4 +6,18 @@
 #
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+#
+#
+student = Student.create({
+  first_name: "Nieka",
+  last_name: "Adhara",
+  email: "niekaadhara@gmail.com"
+})
+
+20.times do |i|
+  Student.create({
+    first_name: "Student #{i + 1}",
+    last_name: "Student #{i + 1}",
+    email: "student#{i + 1}@gmail.com"
+  })
+end
