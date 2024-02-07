@@ -12,7 +12,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      redirect_to students_path
+      redirect_to students_path, notice: "Student has been created succesfully"
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class StudentsController < ApplicationController
 
   def update
     if @student.update(student_params)
-      redirect_to student_path(@student)
+      redirect_to student_path(@student), notice: "Student has been updated succesfully"
     else
       render :edit
     end
@@ -34,12 +34,12 @@ class StudentsController < ApplicationController
 
   def destroy
     @student.destroy
-    redirect_to students_path
+    redirect_to students_path, notice: "Student has been deleted succesfully"
   end
 
   private
   def student_params
-    params.require(:student).permit(:first_name, :last_name, :email)
+    params.require(:student).permit(:first_name, :last_name, :email, :date_of_birth, :address, :contact)
   end
 
   def set_student
