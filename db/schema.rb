@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_08_011533) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_08_051244) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +41,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_08_011533) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "student_projects", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "submission_date"
+    t.index ["project_id"], name: "index_student_projects_on_project_id"
+    t.index ["student_id"], name: "index_student_projects_on_student_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -52,4 +69,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_08_011533) do
     t.string "contact"
   end
 
+  add_foreign_key "student_projects", "projects"
+  add_foreign_key "student_projects", "students"
 end
