@@ -1,0 +1,8 @@
+<p><%=  notice %></p>
+<h1>Course Detail</h1>
+
+<p><strong><%= @course.name %></strong></p>
+<p><%= @course.description %></p>
+
+<%= link_to "Back", courses_path %> |
+<%= link_to "Edit", edit_course_path(@course) %>

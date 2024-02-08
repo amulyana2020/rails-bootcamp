@@ -1,0 +1,24 @@
+<p><%=  notice %></p>
+
+<h1>Courses</h1>
+<p><%= link_to "Create a course", new_course_path %></p>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th class="col-span-3">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @courses.each do |course| %>
+            <tr>
+                <td><%= course.name %></td>
+                <td><%= course.description %></td>
+                <td><%= link_to "View", course %></td>
+                <td><%= link_to "Edit", edit_course_path(course) %></td>
+                <td><%= link_to "Delete", course, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
