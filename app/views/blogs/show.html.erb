@@ -1,0 +1,8 @@
+<p><%=  notice %></p>
+<h1>Blog Detail</h1>
+
+<p><strong><%= @blog.title %></strong></p>
+<p><%= @blog.content %></p>
+
+<%= link_to "Back", blogs_path %> |
+<%= link_to "Edit", edit_blog_path(@blog) %>

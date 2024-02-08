@@ -1,0 +1,24 @@
+<p><%=  notice %></p>
+
+<h1>Blogs</h1>
+<p><%= link_to "Create a blog", new_blog_path %></p>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th class="col-span-3">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @blogs.each do |blog| %>
+            <tr>
+                <td><%= blog.title %></td>
+                <td><%= blog.content %></td>
+                <td><%= link_to "View", blog %></td>
+                <td><%= link_to "Edit", edit_blog_path(blog) %></td>
+                <td><%= link_to "Delete", blog, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
